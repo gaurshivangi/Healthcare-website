@@ -20,7 +20,7 @@ foreach ($diseases as  $disease => $disease_symptoms) {
    if (count(array_intersect($symptoms, $disease_symptoms)) == count($disease_symptoms)) 
    {
       echo "<h2>Possible disease: " . $disease . "</h2>";
-      // You can add more details about the disease such as remedies and food plans here.
+    
       break;
    }
 }
