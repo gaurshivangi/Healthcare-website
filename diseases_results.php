@@ -1,6 +1,5 @@
 <html>
 <body>
-
 <?php
 $diseases = array(
    "Common cold" => array("Fever", "Headache", "Cough", "Sore throat", "Fatigue", "Body aches/pain"),
@@ -11,25 +10,29 @@ $diseases = array(
 );
 
 $symptoms = $_POST['symptoms'];
+
 $max=0;
+$matches=0;
 foreach ($diseases as  $disease => $disease_symptoms) 
 {
-	$matches=count(array_intersect($symptoms, $disease_symptoms)
-   if ($matches > $max) 
+	$matches=count(array_intersect($symptoms,$disease_symptoms));
+   if ( $matches > $max ) 
    {
       $max=$matches;
    }
+   
 }
 
 foreach ($diseases as  $disease => $disease_symptoms)
 {
-	if(count(array_intersect($symptoms, $disease_symptoms) == $max)
+	if( count(array_intersect($symptoms,$disease_symptoms)) == $max )
 	{
 		echo "<h2>Possible disease: " . $disease . "</h2>";
     	break;
-    }
+    	}
 }
 ?>
 </body>
 </html>
+
 
