@@ -1,6 +1,10 @@
 <html>
 <body>
+
 <?php
+
+$x=$_GET['finalDisease'];
+echo "<h1>$x</h1>";
 $home_remedies = array(
    "Common cold" => "Drink warm fluids, rest, use a humidifier, gargle with saltwater",
    "Pneumonia" => "Get plenty of rest, drink fluids, use a humidifier, take over-the-counter pain relievers",
@@ -24,6 +28,15 @@ $otc_medicines = array(
    "Allergies" => "Antihistamines, decongestants, nasal corticosteroids, allergy shots",
    "Anxiety" => "Antidepressants, anti-anxiety medication"
 );
+
+
+$remedies = $home_remedies[$x];
+$food = $food_plans[$x];
+$meds = $otc_medicines[$x];
+
+echo "<h5>Home remedies</h5>: $remedies\n";
+echo "<h5>Food plans</h5>: $food";
+echo "<h5>OTC Medicines</h5>: $meds";
 
 ?>
 </body>
