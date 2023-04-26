@@ -2,8 +2,6 @@
 <body>
 
 <?php
-
-// Array containing possible diseases based on selected symptoms
 $diseases = array(
    "Common cold" => array("Fever", "Headache", "Cough", "Sore throat", "Fatigue", "Body aches/pain"),
    "Pneumonia" => array("Fever", "Cough", "Chest pain", "Shortness of breath", "Fatigue"),
@@ -12,17 +10,24 @@ $diseases = array(
    "Anxiety" => array("Dizziness", "Lightheadedness")
 );
 
-// Get selected symptoms from form submission
 $symptoms = $_POST['symptoms'];
-
-// Loop through diseases and check if all selected symptoms match
-foreach ($diseases as  $disease => $disease_symptoms) {
-   if (count(array_intersect($symptoms, $disease_symptoms)) == count($disease_symptoms)) 
+$max=0;
+foreach ($diseases as  $disease => $disease_symptoms) 
+{
+	$matches=count(array_intersect($symptoms, $disease_symptoms)
+   if ($matches > $max) 
    {
-      echo "<h2>Possible disease: " . $disease . "</h2>";
-    
-      break;
+      $max=$matches;
    }
+}
+
+foreach ($diseases as  $disease => $disease_symptoms)
+{
+	if(count(array_intersect($symptoms, $disease_symptoms) == $max)
+	{
+		echo "<h2>Possible disease: " . $disease . "</h2>";
+    	break;
+    }
 }
 ?>
 </body>
