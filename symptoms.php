@@ -41,7 +41,9 @@ if(count($symptoms_a)==$one)
 	$match=count(array_intersect($symptoms_a,$disease_symptoms));
    if ( $match == "1" ) 
    {
-      echo "<h2>Possible disease:<a href='remedies.php'> " . $disease . "</a></h2>";
+	$final_disease=$disease;
+   	$encoded_disease = urlencode($final_disease);
+	echo "<h2>Possible disease:<a href='remedies.php?disease=$encoded_disease'> " . $disease . "</a></h2>"; 
    }
    
 }
