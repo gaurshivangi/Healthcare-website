@@ -1,9 +1,8 @@
 <html>
 <body>
-
 <?php
 
-$x=$_GET['finalDisease'];
+$x=urldecode($_GET['disease']);
 echo "<h1>$x</h1>";
 $home_remedies = array(
    "Common cold" => "Drink warm fluids, rest, use a humidifier, gargle with saltwater",
@@ -29,15 +28,37 @@ $otc_medicines = array(
    "Anxiety" => "Antidepressants, anti-anxiety medication"
 );
 
-
 $remedies = $home_remedies[$x];
+$remedies_list = explode(",", $remedies);
+
+echo "<h2>Remedies for $x:</h2>";
+echo "<ul>";
+foreach ($remedies_list as $remedy) {
+    echo "<li>$remedy</li>";
+}
+echo "</ul>";
+#####
 $food = $food_plans[$x];
+$food_list = explode(",", $food);
+
+echo "<h2>Dietary Advice for $x:</h2>";
+echo "<ul>";
+foreach ($food_list as $food_items) {
+    echo "<li>$food_items</li>";
+}
+echo "</ul>";
+########
+
 $meds = $otc_medicines[$x];
+$meds_list = explode(",", $meds);
 
-echo "<h5>Home remedies</h5>: $remedies\n";
-echo "<h5>Food plans</h5>: $food";
-echo "<h5>OTC Medicines</h5>: $meds";
-
+echo "<h2>OTC Medicines recommended for $x:</h2>";
+echo "<ul>";
+foreach ($meds_list as $medcine) {
+    echo "<li>$medcine</li>";
+}
+echo "</ul>";
+#####
 ?>
 </body>
 </html>
